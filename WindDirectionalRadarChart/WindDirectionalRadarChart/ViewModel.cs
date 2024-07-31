@@ -22,8 +22,8 @@
                 new() { Direction = "NorthWest",DirectionShortForm="NW", Brasilia = 12 }
             };
             
-            var brush = new SolidColorBrush(Color.FromArgb("#A32FFF"));
-            BrasiliaData.ForEach(data => data.SolidColorBrush = brush);
+            var brasiliaBrush = new SolidColorBrush(Color.FromArgb("#A32FFF"));
+            BrasiliaData.ForEach(data => data.SolidColorBrush = brasiliaBrush);
 
             TokyoData = new List<ClimateData>
             {
