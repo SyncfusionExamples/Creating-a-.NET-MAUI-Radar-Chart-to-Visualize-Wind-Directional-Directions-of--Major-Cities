@@ -80,25 +80,15 @@
                 </chart:SfPolarChart.Title>
 
                 <chart:SfPolarChart.PrimaryAxis>
-                    <chart:CategoryAxis >
-                        <chart:CategoryAxis.MajorTickStyle>
-                            <chart:ChartAxisTickStyle StrokeWidth="1"/>
-                        </chart:CategoryAxis.MajorTickStyle>
-                        <chart:CategoryAxis.MajorGridLineStyle>
-                            <chart:ChartLineStyle StrokeWidth="1"/>
-                        </chart:CategoryAxis.MajorGridLineStyle>
-                    </chart:CategoryAxis>
+                      <chart:CategoryAxis/>
                 </chart:SfPolarChart.PrimaryAxis>
 
                 <chart:SfPolarChart.SecondaryAxis>
-                    <chart:NumericalAxis Interval="{OnPlatform Android=15,iOS=15,Default=10}">
-                        <chart:NumericalAxis.AxisLineStyle>
-                            <chart:ChartLineStyle StrokeWidth="1"/>
-                        </chart:NumericalAxis.AxisLineStyle>
-                        <chart:NumericalAxis.LabelStyle>
-                            <chart:ChartAxisLabelStyle LabelFormat="0' %" FontSize="{OnPlatform Android=10,iOS=10}"/>
-                        </chart:NumericalAxis.LabelStyle>
-                    </chart:NumericalAxis>
+                      <chart:NumericalAxis Interval="{OnPlatform Android=15,iOS=15,Default=10}">
+                            <chart:NumericalAxis.LabelStyle>
+                                  <chart:ChartAxisLabelStyle LabelFormat="0' %" FontSize="{OnPlatform Android=10,iOS=10}"/>
+                            </chart:NumericalAxis.LabelStyle>
+                      </chart:NumericalAxis>
                 </chart:SfPolarChart.SecondaryAxis>
 
                 <chart:PolarAreaSeries Opacity="1"
