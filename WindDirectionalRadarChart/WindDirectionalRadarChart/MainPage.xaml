@@ -133,7 +133,7 @@
                                        TooltipTemplate="{StaticResource TooltipTemplate}"/>
 
                 <chart:SfPolarChart.Legend>
-                    <local:LegendExt ToggleSeriesVisibility="True" Placement="{OnPlatform Android=Bottom,iOS=Bottom, Default=Right}">
+                    <local:LegendExt  Placement="{OnPlatform Android=Bottom,iOS=Bottom, Default=Right}">
                         <local:LegendExt.ItemsLayout>
                             <FlexLayout WidthRequest="220" Wrap="Wrap" Margin="50,0,0,0"  HorizontalOptions="CenterAndExpand" IsEnabled="{OnPlatform Android=True,iOS=True,Default=False}" />
                         </local:LegendExt.ItemsLayout>
