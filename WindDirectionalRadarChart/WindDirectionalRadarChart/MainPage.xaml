@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:local="clr-namespace:WindDirectionalRadarChart"
+             x:Class="WindDirectionalRadarChart.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringConvertor x:Key="stringConvertor" />
+            <local:FillConvertor x:Key="fillConvertor" />
+            <local:CountryConvertor x:Key="CountryConvertor" />
+            <x:String x:Key="radarIcon">M16.799988,17.900024L23.200012,24.300049 16.799988,27.099976z M15.200012,17.900024L15.200012,25 10,23.099976z M17.799988,16.699951L22.600006,16.699951 21.100006,19.900024z M5,
+                             16.699951L14.100006,16.699951  7.6000061,23.199951z M29,16.494766L25.399994,25.400024 16.72319,29 29,29z M3,16.471819L3,29 15.302387,29 6.7000122,25.300049 6.7000122,25.199951z M9.2000122,10.400024L14.100006,
+                             15.300049 7.1000061,15.300049z M24.299988, 8.8000488L27.100006,15.300049 17.799988,15.300049z M16.799988,7.4000244L21.600006,9.1999512 16.799988,14.099976z M15.200012,4.9000244L15.200012,14.099976 8.7999878,
+                             7.5999756z M16, 3.1999512L7.1000061,7 3.2999878,16 7.1000061, 25 16,28.800049 25,25 28.700012,16 25,7z M16.705114,3L25.399994,6.6999512 29,15.510496 29,3z M3,3L3,15.4282 6.7000122,6.6999512 15.302387,3z M0,0L32,0 32,32 0,32z</x:String>
+
+            <DataTemplate x:Key="TooltipTemplate">
+                <VerticalStackLayout Padding="3,3,3,3">
+                    <HorizontalStackLayout>
+                        <Path Data="{StaticResource radarIcon}"
+                              HorizontalOptions="Start"
+                              Fill="{Binding Item, Converter={StaticResource fillConvertor}}">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+                            </Path.RenderTransform>
+                        </Path>
+                        <Label Text="{Binding Item, Converter={StaticResource CountryConvertor}}" TextColor="White" HorizontalOptions="Center" FontAttributes="Bold" FontSize="12" Margin="-3,0,7,0"/>
+                    </HorizontalStackLayout>
+                    <BoxView HeightRequest="2.5" HorizontalOptions="FillAndExpand" Color="Gray" Margin="0,-7,0,2"/>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Item, Converter={StaticResource stringConvertor}, StringFormat='{0} %'}"
+                               FontSize="12"
+                               TextColor="White"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Border Stroke="#321461"
+            Padding="{OnPlatform Default=10, Android=3, iOS=3}"
+            StrokeShape="RoundRectangle 10"
+            Margin="25"
+            StrokeThickness="1.5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9.7*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <chart:SfPolarChart GridLineType="Polygon"
+                                Margin="5,5,5,5"
+                                Grid.Column="0">
+                <chart:SfPolarChart.Title>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="tree.png"/>
+                        <Grid Grid.Column="1" Margin="3,0,0,0" RowSpacing="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Wind Directional Directions in Major Cities around the World"
+                                   FontSize="{OnPlatform Android=12,iOS=12,Default=16}"
+                                   Grid.Row="0"/>
+                            <Label Text="Percentage distribution of wind directions recorded in major cities during January and June 2024."
+                                    FontSize="{OnPlatform Android=8,iOS=8,Default=12}"
+                                   Grid.Row="1"/>
+                        </Grid>
+                    </Grid>
+                </chart:SfPolarChart.Title>
+
+                <chart:SfPolarChart.PrimaryAxis>
+                      <chart:CategoryAxis/>
+                </chart:SfPolarChart.PrimaryAxis>
+
+                <chart:SfPolarChart.SecondaryAxis>
+                      <chart:NumericalAxis Interval="{OnPlatform Android=15,iOS=15,Default=10}">
+                            <chart:NumericalAxis.LabelStyle>
+                                  <chart:ChartAxisLabelStyle LabelFormat="0' %" FontSize="{OnPlatform Android=10,iOS=10}"/>
+                            </chart:NumericalAxis.LabelStyle>
+                      </chart:NumericalAxis>
+                </chart:SfPolarChart.SecondaryAxis>
+
+                <chart:PolarAreaSeries Opacity="1"
+                                       Fill="#A32FFF"
+                                       Stroke="#7112b7"
+                                       ItemsSource="{Binding BrasiliaData}"
+                                       XBindingPath="{OnPlatform Android=DirectionShortForm,iOS=DirectionShortForm,Default=Direction}"
+                                       YBindingPath="Brasilia"
+                                       Label="Brasilia"
+                                       LegendIcon="SeriesType"
+                                       EnableTooltip="True"
+                                       TooltipTemplate="{StaticResource TooltipTemplate}"/>
+                <chart:PolarAreaSeries Opacity="0.8"
+                                       Fill="#A4B500"
+                                       Stroke="#778506"
+                                       ItemsSource="{Binding TokyoData}"
+                                       XBindingPath="{OnPlatform Android=DirectionShortForm,iOS=DirectionShortForm,Default=Direction}"
+                                       YBindingPath="Tokyo"
+                                       Label="Tokyo"
+                                       LegendIcon="SeriesType"
+                                       EnableTooltip="True"
+                                       TooltipTemplate="{StaticResource TooltipTemplate}"/>
+                <chart:PolarAreaSeries Opacity="0.6"
+                                       Fill="#D82591"
+                                       Stroke="#bd1977"
+                                       ItemsSource="{Binding LondonData}"
+                                       XBindingPath="{OnPlatform Android=DirectionShortForm,iOS=DirectionShortForm,Default=Direction}"
+                                       YBindingPath="London"
+                                       Label="London"
+                                       LegendIcon="SeriesType"
+                                       EnableTooltip="True"
+                                       TooltipTemplate="{StaticResource TooltipTemplate}"/>
+                <chart:PolarAreaSeries Opacity="0.4"
+                                       Fill="#FFCA61"
+                                       Stroke="#f98707"
+                                       ItemsSource="{Binding NairobiData}"
+                                       XBindingPath="{OnPlatform Android=DirectionShortForm,iOS=DirectionShortForm,Default=Direction}"
+                                       YBindingPath="Nairobi"
+                                       Label="Nairobi"
+                                       LegendIcon="SeriesType"
+                                       EnableTooltip="True"
+                                       TooltipTemplate="{StaticResource TooltipTemplate}"/>
+
+                <chart:SfPolarChart.Legend>
+                    <local:LegendExt  Placement="{OnPlatform Android=Bottom,iOS=Bottom, Default=Right}">
+                        <local:LegendExt.ItemsLayout>
+                            <FlexLayout WidthRequest="220" Wrap="Wrap" Margin="50,0,0,0"  HorizontalOptions="CenterAndExpand" IsEnabled="{OnPlatform Android=True,iOS=True,Default=False}" />
+                        </local:LegendExt.ItemsLayout>
+                        <chart:ChartLegend.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="4*,6*" Margin="{OnPlatform WinUI='0,0,100,0',MacCatalyst='0,0,100,0'}">
+                                    <Path Grid.Column="0" Data="{StaticResource radarIcon}" Fill="{Binding Item.Fill}">
+                                        <Path.RenderTransform>
+                                            <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                        </Path.RenderTransform>
+                                    </Path>
+                                    <Label Grid.Column="1" Margin="{OnPlatform Android='-4,0,10,2',iOS='-4,0,0,2',Default='-2,0,0,2'}" 
+                                           Text="{Binding Item.Label}" TextColor="Black" FontSize="12"/>
+                                </Grid>
+                            </DataTemplate>
+                        </chart:ChartLegend.ItemTemplate>
+                    </local:LegendExt>
+                </chart:SfPolarChart.Legend>
+            </chart:SfPolarChart>
+            <Label Grid.Row="1" HorizontalOptions="FillAndExpand" FontAttributes="Italic"  Text="** Wind Vane - An instrument which is used to measure wind direction"
+                   FontSize="{OnPlatform Android=8,iOS=8,Default=14}" TextColor="Gray" HorizontalTextAlignment="End" VerticalTextAlignment="Start"  Margin="0,0,5,0" />
+        </Grid>
+    </Border>
+
+</ContentPage>
