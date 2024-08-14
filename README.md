@@ -35,8 +35,7 @@ Legend Customization enhances the chart by providing a clear and concise legend 
 
 These customizations will help you create a more engaging and informative Radar chart.
 
-
-![image](https://github.com/user-attachments/assets/50adaacd-0512-4eb0-b722-7aa61a42e5fe)
+![gif](https://github.com/user-attachments/assets/08e4529f-32d3-48ce-9250-979b22635042)
 
 
 
