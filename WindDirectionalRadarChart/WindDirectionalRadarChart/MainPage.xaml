@@ -69,7 +69,7 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Label Text="Wind Directional Directions in Major Cities around the World"
+                            <Label Text="Wind Directions in Major Cities around the World"
                                    FontSize="{OnPlatform Android=12,iOS=12,Default=16}"
                                    Grid.Row="0"/>
                             <Label Text="Percentage distribution of wind directions recorded in major cities during January and June 2024."
@@ -135,7 +135,7 @@
                 <chart:SfPolarChart.Legend>
                     <local:LegendExt  Placement="{OnPlatform Android=Bottom,iOS=Bottom, Default=Right}">
                         <local:LegendExt.ItemsLayout>
-                            <FlexLayout WidthRequest="220" Wrap="Wrap" Margin="50,0,0,0"  HorizontalOptions="CenterAndExpand" IsEnabled="{OnPlatform Android=True,iOS=True,Default=False}" />
+                            <FlexLayout WidthRequest="220" Wrap="Wrap" Margin="50,0,0,0" HorizontalOptions="CenterAndExpand" IsEnabled="{OnPlatform Android=True,iOS=True,Default=False}" />
                         </local:LegendExt.ItemsLayout>
                         <chart:ChartLegend.ItemTemplate>
                             <DataTemplate>
