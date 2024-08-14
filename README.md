@@ -45,4 +45,4 @@ These customizations will help you create a more engaging and informative Radar 
 
 If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
 
-For a step-by-step procedure, refer to the [Wind Directional Direction]() blog post.
+For a step-by-step procedure, refer to the [Wind Directional Direction](https://www.syncfusion.com/blogs/post/maui-radar-chart-visualize-wind-direction) blog post.
