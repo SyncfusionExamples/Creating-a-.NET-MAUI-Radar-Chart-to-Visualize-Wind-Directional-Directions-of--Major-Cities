@@ -35,8 +35,7 @@ Legend Customization enhances the chart by providing a clear and concise legend 
 
 These customizations will help you create a more engaging and informative Radar chart.
 
-
-![image](https://github.com/user-attachments/assets/50adaacd-0512-4eb0-b722-7aa61a42e5fe)
+![gif](https://github.com/user-attachments/assets/08e4529f-32d3-48ce-9250-979b22635042)
 
 
 
@@ -46,4 +45,4 @@ These customizations will help you create a more engaging and informative Radar 
 
 If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
 
-For a step-by-step procedure, refer to the [Wind Directional Direction]() blog post.
+For a step-by-step procedure, refer to the [Wind Directional Direction](https://www.syncfusion.com/blogs/post/maui-radar-chart-visualize-wind-direction) blog post.
